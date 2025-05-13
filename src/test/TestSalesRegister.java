@@ -90,7 +90,7 @@ public class TestSalesRegister {
 
         // Añadir el artículo al inventario
         inventory.addItem(itemToAdd);
-
+//
         // Restablecer totalSalesAmount para fines de prueba
         SalesRegister.resetTotalSalesAmount();
 
