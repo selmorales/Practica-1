@@ -84,12 +84,13 @@ public class Inventory {
 		int contador = 0;
 		//System.out.println("itemLength: " + itemLength);
 		for (int i = 0; i < itemLength; i++) { //itemLength coincide con primer hueco
-			if(this.items[i] != null && this.items[i].getName() == name2 && this.items[i].getSize() == size2) {
+			if(this.items[i] != null && this.items[i].equals(name2, size2) == true) {
 				contador += 1;	 
 			}else {
+				System.out.println("En "+ i + " no está.");
 				
 			}
-		} //System.out.println("contador: " + contador + "\n ");
+		} System.out.println("contador: " + contador + "\n ");
 		return contador;
 	} // fin checkStock
 
@@ -97,7 +98,7 @@ public class Inventory {
 	private int buscador(String name2, char size2) {
 		int posicion = -1; // por defecto para saber si cambia o no
 		for (int i = 0; i < itemLength; i++) { //podría poner hasta itemLength
-				if(this.items[i] != null && this.items[i].getName() == name2 && this.items[i].getSize() == size2) {
+				if(this.items[i] != null && this.items[i].getName().equals(name2) && this.items[i].getSize() == size2) {
 				//System.out.println("posicion : " + i + " = " + this.items[i]); 
 				posicion = i;	
 				//System.out.println("posicion " + posicion);
@@ -124,10 +125,11 @@ public class Inventory {
 	
 
 	public ClothingItem extractItem(String name2, char size2) {
-		ClothingItem itemExtraido = null;
+		ClothingItem itemExtraido;
 		// 1. checkStock
 		int stock = this.checkStock(name2, size2);
 		if (stock == 0) {
+			itemExtraido = null;
 			System.out.println( "No está dicho item");
 			
 		}else { // 2. buscar posición, guardar y eliminar

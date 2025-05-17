@@ -78,7 +78,15 @@ public class ClothingItem {
 			return false;
 		}
 		ClothingItem item = (ClothingItem) obj;
-	 return this.size == item.size && this.name == item.name;
+	 return this.size == item.size && this.name.equals(item.name);
+	 /* this.name == item.size compara si apunta a la misma dirección de memoria,
+	  * devolverá false aunque tengan el mismo contenido si no son el mismo objeto.
+	  * con el equals, compara el contenido.
+	  */
+	}
+	 //este método solo compara nombre y talla
+	public boolean equals(String name, char size) {
+	 return this.size == size && this.name.equals(name);
 	}
 	
 	
